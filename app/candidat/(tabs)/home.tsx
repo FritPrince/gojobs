@@ -159,7 +159,7 @@ export default function Home() {
       <HeaderCand />
 
       <TouchableOpacity style={styles.searchContainer} onPress={() => router.push('../../searchscreen')}>
-        <Ionicons name="search-outline" size={20} color="#888" />
+        <Ionicons name="search-outline" size={20} color="#666666" />
         <TextInput
           placeholder="Search Jobs"
           placeholderTextColor="#888"
@@ -167,7 +167,7 @@ export default function Home() {
         />
       </TouchableOpacity>
 
-      <Text style={styles.sectionTitle}>Recommandation pour vous</Text>
+      <Text style={styles.sectionTitle}>Emplois recommandé</Text>
 
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         {offersData.map((offer) => (
@@ -188,7 +188,7 @@ export default function Home() {
                 <Ionicons
                   name="heart"
                   size={20}
-                  color={likedOffers[offer.id] ? 'red' : '#888'} // Rouge si liké, gris sinon
+                  color={likedOffers[offer.id] ? 'red' : '#666666'} // Rouge si liké, gris sinon
                   style={styles.like}
                 />
               </TouchableOpacity>
@@ -204,7 +204,7 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#181A1B',
+    backgroundColor: '#1D222B',
     paddingHorizontal: 16,
     paddingTop: 10,
   },
@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   searchInput: {
-    color: '#FFFFFF',
+    color: '#343F47',
     fontSize: 16,
     marginLeft: 10,
     flex: 1,
@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   recommendationCard: {
-    backgroundColor: '#3A3A3C',
+    backgroundColor: '#434853',
     borderRadius: 12,
     padding: 16,
     flexDirection: 'row',
@@ -260,12 +260,12 @@ const styles = StyleSheet.create({
     bottom:10
   },
   companyName: {
-    color: '#B0B0B0',
+    color: '#A4A6A6',
     fontSize: 14,
     bottom:10
   },
   location: {
-    color: '#CCCCCC',
+    color: '#FFFFFFFF',
     fontSize: 14,
     fontWeight: 'bold',
   },

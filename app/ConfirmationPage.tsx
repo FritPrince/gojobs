@@ -62,7 +62,7 @@ export default function ConfirmationPage() {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#1F1F1F',
+      backgroundColor: '#1D222B',
       padding: 16,
     },
     header: {

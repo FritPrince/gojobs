@@ -220,7 +220,7 @@ export default function resultPro() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#181A1B',
+        backgroundColor: '#1D222B',
         paddingHorizontal: 16,
         paddingTop: 10,
     },

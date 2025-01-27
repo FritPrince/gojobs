@@ -117,7 +117,7 @@ export default function StatsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#181A1B', // Fond sombre
+    backgroundColor: '#1D222B',
     paddingHorizontal: 16,
     paddingTop: 10,
   },
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   dashboardCard: {
-    backgroundColor: '#2C2C2E',
+    backgroundColor: '#434853',
     borderRadius: 12,
     padding: 16,
     marginBottom: 16,

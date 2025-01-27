@@ -55,7 +55,7 @@ export default function Home() {
         <View>
         <Text style={styles.name}>{item.name}</Text>
           <View style={styles.locationContainer}>
-            <Image source={require('@/assets/images/locate.png')} />
+            <Image source={require('@/assets/images/locate.png')} style={{width:18, height:15}}/>
             <Text style={styles.location}>{item.location}</Text>
           </View>
         </View>
@@ -103,7 +103,7 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#181A1B',
+    backgroundColor: '#1D222B',
     paddingHorizontal: 16,
     paddingTop: 10,
   },

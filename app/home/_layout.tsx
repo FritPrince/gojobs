@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
 import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome, AntDesign } from '@expo/vector-icons';
@@ -21,6 +21,8 @@ export default function LoginScreen() {
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.container}>
+      <Image source={require('@/assets/images/logooo.png')} style={{alignItems:'center', justifyContent:'center', right:-100}} />
+
         {/* Switch entre Candidat et Employeur */}
         <View style={styles.switchContainer}>
           <View style={isEmployer ? styles.rightActive : styles.leftActive}>
@@ -42,7 +44,7 @@ export default function LoginScreen() {
         </View>
 
         {/* Formulaire de connexion */}
-        <Text style={styles.title}>Login Form</Text>
+        <Text style={styles.title}></Text>
         <View style={styles.formContainer}>
           {/* Switch entre Login et Signup */}
           <View style={styles.switchContainer}>
@@ -54,12 +56,12 @@ export default function LoginScreen() {
             </View>
             <TouchableOpacity onPress={() => setIsLogin(true)} style={styles.switchButton}>
               <Text style={[styles.switchText, isLogin && styles.activeSwitchText]}>
-                Login
+              Se connecter
               </Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => setIsLogin(false)} style={styles.switchButton}>
               <Text style={[styles.switchText, !isLogin && styles.activeSwitchText]}>
-                Signup
+                S'inscrire
               </Text>
             </TouchableOpacity>
           </View>
@@ -68,44 +70,41 @@ export default function LoginScreen() {
           <TextInput style={styles.input} placeholder="Password" placeholderTextColor="#666" secureTextEntry />
 
           <TouchableOpacity>
-            <Text style={styles.forgotText}>Forgot password?</Text>
+            <Text style={styles.forgotText}>Mot de passe oublié ?</Text>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={handleLogin} style={styles.loginButton}>
             <LinearGradient colors={['#0F53E7FF', '#192f6a']} style={styles.gradientButtonBackground}>
-              <Text style={styles.loginButtonText}>Login</Text>
+              <Text style={styles.loginButtonText}>Se connecter</Text>
             </LinearGradient>
           </TouchableOpacity>
 
-          <Text style={styles.orText}>or</Text>
+          <Text style={styles.orText}>ou</Text>
 
-          <Text style={styles.infoText}>
-            To connect a sign-in method, the email must match the one on your account.
-          </Text>
 
           {/* Boutons de connexion social */}
           <View style={styles.socialLoginContainer}>
             <TouchableOpacity style={styles.socialButton}>
-              <FontAwesome name="amazon" size={24} color="black" style={styles.icon} />
-              <Text style={styles.socialButtonText}>Continue with Amazon</Text>
+              <FontAwesome name="linkedin" size={24} color="black" style={styles.icon} />
+              <Text style={styles.socialButtonText}>Continuer avec Linkedin</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.socialButton}>
               <FontAwesome name="facebook" size={24} color="black" style={styles.icon} />
-              <Text style={styles.socialButtonText}>Continue with Facebook</Text>
+              <Text style={styles.socialButtonText}>Continuer avec Facebook</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.socialButton}>
               <AntDesign name="google" size={24} color="black" style={styles.icon} />
-              <Text style={styles.socialButtonText}>Continue with Google</Text>
+              <Text style={styles.socialButtonText}>Continuer avec Google</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.socialButton}>
               <AntDesign name="apple1" size={24} color="black" style={styles.icon} />
-              <Text style={styles.socialButtonText}>Continue with Apple</Text>
+              <Text style={styles.socialButtonText}>Continuer avec Apple</Text>
             </TouchableOpacity>
           </View>
         </View>
 
         <Text style={styles.signUpText}>
-          Need an account? <Text style={styles.signUpLink}>Sign up</Text>
+          Vous n'avez pas un compte ? <Text style={styles.signUpLink}>S'inscrire</Text>
         </Text>
       </View>
     </ScrollView>

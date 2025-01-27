@@ -155,7 +155,7 @@ export default function ContactUsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#121212', // Couleur de fond sombre
+    backgroundColor: '#1D222B', // Couleur de fond sombre
     paddingHorizontal: 20,
   },
   header: {

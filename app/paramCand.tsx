@@ -94,7 +94,7 @@ const Option = ({ icon, label, onPress }) => (
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#181A1B',
+        backgroundColor: '#1D222B',
         paddingHorizontal: 16,
         paddingTop: 40,
     },

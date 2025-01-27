@@ -77,13 +77,13 @@ export default function NotificationSettings() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#121212', // Couleur sombre pour le fond
+    backgroundColor: '#1D222B', // Couleur sombre pour le fond
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#1E1E1E', // Fond du header
+    backgroundColor: '#1D222B', // Fond du header
   },
   headerTitle: {
     flex: 1,

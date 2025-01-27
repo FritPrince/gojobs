@@ -8,7 +8,7 @@ export default function HeaderCand() {
   return (
     <View style={styles.header}>
       {/* Affichage du logo */}
-      <Image source={require('@/assets/images/logo.jpg')} style={styles.logo} />
+      <Image source={require('@/assets/images/logoo.png')} style={styles.logo} />
 
       <View style={styles.icons}>
         <TouchableOpacity style={styles.icon} onPress={() => router.push('../../notification')}>
@@ -32,18 +32,18 @@ export default function HeaderCand() {
 const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 20,
   },
   logo: {
-    width: 100, // Adapter selon la taille souhaitée
-    height: 40, // Adapter selon la taille souhaitée
+    width: 380, // Adapter selon la taille souhaitée
+    height: 47, // Adapter selon la taille souhaitée
     resizeMode: 'contain',
   },
   icons: {
     flexDirection: 'row',
-    color:'#000000FF'
+    color:'#000000FF',
+    right:150
 
   },
   icon: {

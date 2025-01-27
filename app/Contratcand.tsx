@@ -116,13 +116,13 @@ const contractcandScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1E1E1E',
+    backgroundColor: '#1D222B',
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#1E1E1E', // Fond du header
+    backgroundColor: '#1D222B', // Fond du header
   },
   title: {
     flex: 1,

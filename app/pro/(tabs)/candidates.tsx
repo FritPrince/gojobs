@@ -125,7 +125,7 @@ export default function CandidatesScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#181A1B',
+    backgroundColor: '#1D222B',
     paddingHorizontal: 16,
     paddingTop: 10,
   },
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
   },
   jobCard: {
     flexDirection: 'row',
-    backgroundColor: '#2C2C2E',
+    backgroundColor: '#434853',
     borderRadius: 12,
     padding: 12,
     alignItems: 'center',

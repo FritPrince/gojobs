@@ -155,7 +155,7 @@ export default function SearchScreenPro() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#181A1B', // Couleur de fond sombre
+    backgroundColor: '#1D222B', // Couleur de fond sombre
     paddingHorizontal: 16,
     paddingTop: 10,
   },

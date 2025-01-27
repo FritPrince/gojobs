@@ -117,7 +117,7 @@ export default function PublishScreen() {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: '#181A1B',
+    backgroundColor: '#1D222B',
     padding: 16,
   },
   header: {

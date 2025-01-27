@@ -247,7 +247,7 @@ export default function Flashjob() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#181A1B',
+    backgroundColor: '#1D222B',
     paddingHorizontal: 16,
     paddingTop: 10,
   },
@@ -328,7 +328,7 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   recommendationCard: {
-    backgroundColor: '#3A3A3C',
+    backgroundColor: '#434853',
     borderRadius: 12,
     padding: 16,
     flexDirection: 'row',

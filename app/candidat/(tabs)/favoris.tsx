@@ -117,7 +117,7 @@ export default function Favoris() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#181A1B',
+        backgroundColor: '#1D222B',
         padding: 16,
     },
     searchContainer: {
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     card: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: '#282A2B',
+        backgroundColor: '#434853',
         borderRadius: 12,
         padding: 12,
         marginBottom: 12,

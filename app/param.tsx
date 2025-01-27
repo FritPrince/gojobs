@@ -77,7 +77,7 @@ export default function Param() {
                     <Text style={styles.profileName}>Mathieu Cordion</Text>
                     <View style={{ flexDirection: 'row' }}>
                         <Text style={{ color: '#FFFFFF' }}>Solde total</Text>
-                        <TouchableOpacity onPress={() => setShowBalance(!showBalance)} style={{ right: 180, marginTop: 5 }}>
+                        <TouchableOpacity onPress={() => setShowBalance(!showBalance)} style={{ right: -8, marginTop: 5 }}>
                             <Ionicons
                                 name={showBalance ? 'eye-off' : 'eye'}
                                 size={14}
@@ -146,7 +146,7 @@ export default function Param() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#181A1B',
+        backgroundColor: '#1D222B',
         paddingHorizontal: 16,
         paddingTop: 40,
     },

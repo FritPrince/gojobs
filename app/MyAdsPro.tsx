@@ -112,13 +112,13 @@ export default function MyAdsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#121212', // Fond sombre
+    backgroundColor: '#1D222B', // Fond sombre
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#1E1E1E', // Fond du header
+    backgroundColor: '#1D222B', // Fond du header
   },
   headerTitle: {
     flex: 1,

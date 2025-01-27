@@ -14,8 +14,8 @@ export default function UserXLayout() {
             switch (route.name) {
               case 'home':
                 iconSource = focused
-                  ? require('@/assets/icons/home.png') // Chemin pour l'icône active
-                  : require('@/assets/icons/home.png'); // Chemin pour l'icône inactive
+                  ? require('@/assets/icons/home.png') 
+                  : require('@/assets/icons/home.png');
                 break;
               case 'flashjob':
                 iconSource = focused
@@ -53,7 +53,7 @@ export default function UserXLayout() {
               />
             );
           },
-          tabBarActiveTintColor: '#457DF5FF',
+          tabBarActiveTintColor: '#329EE6',
           tabBarInactiveTintColor: '#888',
           tabBarStyle: {
             backgroundColor: '#1A1A1D',

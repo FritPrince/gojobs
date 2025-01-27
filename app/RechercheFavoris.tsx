@@ -199,13 +199,13 @@ const RechercheFavoris = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#1C1C1E" },
+  container: { flex: 1, backgroundColor: "#1D222B" },
   header: {
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 16,
     paddingVertical: 20,
-    backgroundColor: "#1C1C1E",
+    backgroundColor: "#1D222B",
   },
   headerText: { color: "#fff", fontSize: 18, fontWeight: "bold", marginLeft: 8 },
   sectionTitle: { color: "#fff", fontSize: 16, fontWeight: "bold", paddingHorizontal: 16, marginBottom: 10 },

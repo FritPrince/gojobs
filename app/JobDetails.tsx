@@ -95,7 +95,7 @@ export default function JobDetails() {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: '#181A1B',
+    backgroundColor: '#1D222B',
     paddingBottom: 20, // Pour laisser de l'espace pour les boutons
   },
   imageGallery: {
