@@ -6,11 +6,47 @@ import { FontAwesome, AntDesign } from '@expo/vector-icons';
 
 export default function LoginScreen() {
   const router = useRouter();
-  const [isEmployer, setIsEmployer] = useState(true); // Par défaut sur Employeur
-  const [isLogin, setIsLogin] = useState(true); // Par défaut sur Login
+  const [isEmployer, setIsEmployer] = useState(true);
+  const [isLogin, setIsLogin] = useState(true);
 
-  // Fonction pour gérer la redirection en fonction du profil sélectionné
+  const [loginData, setLoginData] = useState({
+    email: '',
+    password: '',
+  });
+
+  const [signupData, setSignupData] = useState({
+    fullName: '',
+    email: '',
+    phoneNumber: '',
+    password: '',
+    confirmPassword: '',
+  });
+
+  const handleLoginData = (field, value) => {
+    setLoginData({
+      ...loginData,
+      [field]: value,
+    });
+  };
+
+  const handleSignupData = (field, value) => {
+    setSignupData({
+      ...signupData,
+      [field]: value,
+    });
+  };
+
   const handleLogin = () => {
+    console.log('Login Data:', loginData);
+    if (isEmployer) {
+      router.push('../../pro/(tabs)');
+    } else {
+      router.push('../../candidat/(tabs)');
+    }
+  };
+
+  const handleSignup = () => {
+    console.log('Signup Data:', signupData);
     if (isEmployer) {
       router.push('../../pro/(tabs)');
     } else {
@@ -21,68 +57,109 @@ export default function LoginScreen() {
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.container}>
-      <Image source={require('@/assets/images/logooo.png')} style={{alignItems:'center', justifyContent:'center', right:-100}} />
+        <Image source={require('@/assets/images/logooo.png')} style={{ alignItems: 'center', justifyContent: 'center', right: -100 }} />
 
-        {/* Switch entre Candidat et Employeur */}
         <View style={styles.switchContainer}>
           <View style={isEmployer ? styles.rightActive : styles.leftActive}>
-            <LinearGradient
-              colors={['#4c669f', '#3b5998', '#192f6a']}
-              style={styles.gradientBackground}
-            />
+            <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.gradientBackground} />
           </View>
           <TouchableOpacity onPress={() => setIsEmployer(false)} style={styles.switchButton}>
-            <Text style={[styles.switchText, !isEmployer && styles.activeSwitchText]}>
-              Candidats
-            </Text>
+            <Text style={[styles.switchText, !isEmployer && styles.activeSwitchText]}>Candidats</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => setIsEmployer(true)} style={styles.switchButton}>
-            <Text style={[styles.switchText, isEmployer && styles.activeSwitchText]}>
-              Employeur
-            </Text>
+            <Text style={[styles.switchText, isEmployer && styles.activeSwitchText]}>Employeur</Text>
           </TouchableOpacity>
         </View>
 
-        {/* Formulaire de connexion */}
-        <Text style={styles.title}></Text>
-        <View style={styles.formContainer}>
-          {/* Switch entre Login et Signup */}
-          <View style={styles.switchContainer}>
-            <View style={isLogin ? styles.leftActive : styles.rightActive}>
-              <LinearGradient
-                colors={['#0F53E7FF', '#192f6a']}
-                style={styles.gradientBackground}
-              />
-            </View>
-            <TouchableOpacity onPress={() => setIsLogin(true)} style={styles.switchButton}>
-              <Text style={[styles.switchText, isLogin && styles.activeSwitchText]}>
-              Se connecter
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => setIsLogin(false)} style={styles.switchButton}>
-              <Text style={[styles.switchText, !isLogin && styles.activeSwitchText]}>
-                S'inscrire
-              </Text>
-            </TouchableOpacity>
+        <View style={styles.switchContainer}>
+          <View style={isLogin ? styles.leftActive : styles.rightActive}>
+            <LinearGradient colors={['#0F53E7FF', '#192f6a']} style={styles.gradientBackground} />
           </View>
-
-          <TextInput style={styles.input} placeholder="Email Address" placeholderTextColor="#666" />
-          <TextInput style={styles.input} placeholder="Password" placeholderTextColor="#666" secureTextEntry />
-
-          <TouchableOpacity>
-            <Text style={styles.forgotText}>Mot de passe oublié ?</Text>
+          <TouchableOpacity onPress={() => setIsLogin(true)} style={styles.switchButton}>
+            <Text style={[styles.switchText, isLogin && styles.activeSwitchText]}>Se connecter</Text>
           </TouchableOpacity>
-
-          <TouchableOpacity onPress={handleLogin} style={styles.loginButton}>
-            <LinearGradient colors={['#0F53E7FF', '#192f6a']} style={styles.gradientButtonBackground}>
-              <Text style={styles.loginButtonText}>Se connecter</Text>
-            </LinearGradient>
+          <TouchableOpacity onPress={() => setIsLogin(false)} style={styles.switchButton}>
+            <Text style={[styles.switchText, !isLogin && styles.activeSwitchText]}>S'inscrire</Text>
           </TouchableOpacity>
+        </View>
 
+        <View style={styles.formContainer}>
+          {isLogin ? (
+            <>
+              <TextInput
+                style={styles.input}
+                placeholder="Email Address"
+                placeholderTextColor="#666"
+                value={loginData.email}
+                onChangeText={(text) => handleLoginData('email', text)}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Password"
+                placeholderTextColor="#666"
+                secureTextEntry
+                value={loginData.password}
+                onChangeText={(text) => handleLoginData('password', text)}
+              />
+              <TouchableOpacity>
+                <Text style={styles.forgotText}>Mot de passe oublié ?</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={handleLogin} style={styles.loginButton}>
+                <LinearGradient colors={['#0F53E7FF', '#192f6a']} style={styles.gradientButtonBackground}>
+                  <Text style={styles.loginButtonText}>Se connecter</Text>
+                </LinearGradient>
+              </TouchableOpacity>
+            </>
+          ) : (
+            <>
+              <TextInput
+                style={styles.input}
+                placeholder="Nom complet"
+                placeholderTextColor="#666"
+                value={signupData.fullName}
+                onChangeText={(text) => handleSignupData('fullName', text)}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Email Address"
+                placeholderTextColor="#666"
+                value={signupData.email}
+                onChangeText={(text) => handleSignupData('email', text)}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Numéro"
+                placeholderTextColor="#666"
+                keyboardType="phone-pad"
+                textContentType="telephoneNumber"
+                maxLength={15}
+                value={signupData.phoneNumber}
+                onChangeText={(text) => handleSignupData('phoneNumber', text)}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Mot de passe"
+                placeholderTextColor="#666"
+                secureTextEntry
+                value={signupData.password}
+                onChangeText={(text) => handleSignupData('password', text)}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Confirmer le mot de passe"
+                placeholderTextColor="#666"
+                secureTextEntry
+                value={signupData.confirmPassword}
+                onChangeText={(text) => handleSignupData('confirmPassword', text)}
+              />
+              <TouchableOpacity onPress={handleSignup} style={styles.loginButton}>
+                <LinearGradient colors={['#0F53E7FF', '#192f6a']} style={styles.gradientButtonBackground}>
+                  <Text style={styles.loginButtonText}>S'inscrire</Text>
+                </LinearGradient>
+              </TouchableOpacity>
+            </>
+          )}
           <Text style={styles.orText}>ou</Text>
-
-
-          {/* Boutons de connexion social */}
           <View style={styles.socialLoginContainer}>
             <TouchableOpacity style={styles.socialButton}>
               <FontAwesome name="linkedin" size={24} color="black" style={styles.icon} />
@@ -102,10 +179,6 @@ export default function LoginScreen() {
             </TouchableOpacity>
           </View>
         </View>
-
-        <Text style={styles.signUpText}>
-          Vous n'avez pas un compte ? <Text style={styles.signUpLink}>S'inscrire</Text>
-        </Text>
       </View>
     </ScrollView>
   );
@@ -115,7 +188,6 @@ const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,
     justifyContent: 'center',
-    paddingVertical: 20,
     backgroundColor: '#fff',
   },
   container: {
@@ -162,12 +234,6 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 20,
-  },
   formContainer: {
     backgroundColor: '#f5f5f5',
     padding: 20,
@@ -188,7 +254,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   loginButton: {
-    borderRadius: 1,
+    borderRadius: 25,
     overflow: 'hidden',
     marginBottom: 20,
   },
