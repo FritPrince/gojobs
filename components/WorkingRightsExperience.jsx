@@ -2,15 +2,12 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import CustomCheckbox from './CustomCheckbox'; // Assurez-vous que ce composant est bien importé
 
-export default function WorkingRightsExperience({ selectedOptions, setSelectedOptions }) {
+export default function WorkingRightsExperience({ selectedOptions, setSelectedOptions, errors, touched }) {
   
   const toggleOption = (option) => {
-    // Vérifier si l'option est déjà sélectionnée
     if (selectedOptions.includes(option)) {
-      // Si l'option est déjà sélectionnée, on la retire
       setSelectedOptions(selectedOptions.filter((item) => item !== option));
     } else {
-      // Sinon, on l'ajoute
       setSelectedOptions([...selectedOptions, option]);
     }
   };
@@ -44,9 +41,13 @@ export default function WorkingRightsExperience({ selectedOptions, setSelectedOp
           onValueChange={() => toggleOption('Student visa')}
         />
       </View>
+      {errors.workingRights && touched.workingRights && (
+        <Text style={styles.errorText}>{errors.workingRights}</Text>
+      )}
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   sectionTitle: {
@@ -62,5 +63,10 @@ const styles = StyleSheet.create({
   },
   checkboxGroup: {
     marginBottom: 20,
+  },
+  errorText: {
+    color: "red",
+    fontSize: 15,
+    marginBottom: 10,
   },
 });

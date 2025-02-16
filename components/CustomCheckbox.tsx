@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, View, Text, StyleSheet, GestureResponderEvent } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 type Props = {
   label: string;
   value: boolean;
-  onValueChange: (newValue: boolean) => void;
+  onValueChange: (label: string) => void;
 };
 
 export default function CustomCheckbox({ label, value, onValueChange }: Props) {
   return (
-    <TouchableOpacity style={styles.container} onPress={() => onValueChange(!value)}>
+    <TouchableOpacity style={styles.container} onPress={() => onValueChange(label)}>
       <View style={[styles.checkbox, value && styles.checked]}>
         {value && <Ionicons name="checkmark" size={18} color="#FFFFFF" />}
       </View>

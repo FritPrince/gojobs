@@ -1,7 +1,12 @@
-import React from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import React from "react";
+import { View, Text, StyleSheet, TextInput } from "react-native";
 
-export default function Description({ description, setDescription }) {
+export default function Description({
+  description,
+  setDescription,
+  errors,
+  touched,
+}) {
   return (
     <View>
       <Text style={styles.label}>Description</Text>
@@ -15,27 +20,35 @@ export default function Description({ description, setDescription }) {
           onChangeText={setDescription} // Mettre à jour la description
         />
       </View>
+      {errors.description && touched.description && (
+        <Text style={styles.errorText}>{errors.description}</Text>
+      )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   label: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 16,
     marginBottom: 10,
   },
   inputContainer: {
-    backgroundColor: '#2C2C2E',
+    backgroundColor: "#2C2C2E",
     borderRadius: 12,
     padding: 10,
     marginBottom: 16,
   },
   input: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 16,
   },
   textArea: {
     height: 100,
+  },
+  errorText: {
+    color: "red",
+    fontSize: 15,
+    marginBottom: 10,
   },
 });

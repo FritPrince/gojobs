@@ -2,15 +2,12 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import CustomCheckbox from './CustomCheckbox'; // Assurez-vous que CustomCheckbox est bien importé
 
-export default function Accomodation({ selectedOptions, setSelectedOptions }) {
+export default function Accomodation({ selectedOptions, setSelectedOptions, errors, touched }) {
   
   const toggleOption = (option) => {
-    // Vérifier si l'option est déjà sélectionnée
     if (selectedOptions.includes(option)) {
-      // Si l'option est déjà sélectionnée, on la retire
       setSelectedOptions(selectedOptions.filter((item) => item !== option));
     } else {
-      // Sinon, on l'ajoute
       setSelectedOptions([...selectedOptions, option]);
     }
   };
@@ -46,6 +43,9 @@ export default function Accomodation({ selectedOptions, setSelectedOptions }) {
           onValueChange={() => toggleOption('Logement adapté')}
         />
       </View>
+      {errors.accommodationOptions && touched.accommodationOptions && (
+        <Text style={styles.errorText}>{errors.accommodationOptions}</Text>
+      )}
     </View>
   );
 }
@@ -58,6 +58,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   checkboxGroup: {
-    marginBottom: 20,
+    marginBottom: 10,
+  },
+  errorText: {
+    color: "red",
+    fontSize: 15,
+    marginBottom: 10,
   },
 });

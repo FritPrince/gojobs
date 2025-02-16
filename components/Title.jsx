@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
 
-export default function Title({ title, setTitle }) { // Ajout des props
+export default function Title({ title, setTitle, errors, touched }) {
   return (
     <View>
       <Text style={styles.label}>Title</Text>
+
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
@@ -14,9 +15,8 @@ export default function Title({ title, setTitle }) { // Ajout des props
           onChangeText={setTitle} // Mise à jour du titre lorsque l'utilisateur saisit du texte
         />
       </View>
-      <View style={styles.progressBarContainer}>
-        <View style={styles.progressBar} />
-        <Text style={styles.progressText}>Parfait !</Text>
+      <View>
+        {errors.title && touched.title && <Text style={styles.errorText}>{errors.title}</Text>}
       </View>
     </View>
   );
@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
   inputContainer: {
     backgroundColor: '#2C2C2E',
     borderRadius: 12,
-    padding: 10,
-    marginBottom: 16,
+    padding: 6,
+    marginBottom: 4,
   },
   input: {
     color: '#FFFFFF',
@@ -53,5 +53,10 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 12,
     marginLeft: 10,
+  },
+  errorText: {
+    color: 'red',
+    fontSize: 15,
+    marginBottom: 10,
   },
 });

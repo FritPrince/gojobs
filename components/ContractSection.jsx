@@ -15,7 +15,14 @@ export default function ContractSection({ contractImages, setContractImages }) {
     });
 
     if (!result.canceled) {
-      setContractImages([...contractImages, result.assets[0].uri]); // Ajouter l'image sélectionnée à la liste
+      const newImage = result.assets[0];
+      const imageObject = {
+        uri: newImage.uri,
+        name: newImage.uri.split('/').pop(),
+        type: 'image/jpeg'
+      };
+      console.log('New contract image object:', imageObject);
+      setContractImages([...contractImages, imageObject]);
     }
   };
 
@@ -33,8 +40,12 @@ export default function ContractSection({ contractImages, setContractImages }) {
         </TouchableOpacity>
 
         {/* Affichage des contrats sélectionnés */}
-        {contractImages.map((imageUri, index) => (
-          <Image key={index} source={{ uri: imageUri }} style={styles.contractPreview} />
+        {contractImages.map((image, index) => (
+          <Image 
+            key={index} 
+            source={{ uri: image.uri }} 
+            style={styles.contractPreview} 
+          />
         ))}
       </View>
     </View>

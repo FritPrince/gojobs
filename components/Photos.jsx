@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 
-export default function Photos({ selectedPhotos, setSelectedPhotos }) {
+export default function Photos({ selectedPhotos, setSelectedPhotos, errors, touched }) {
   const pickImage = async () => {
     // Demander la permission d'accéder à la galerie
     let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -20,7 +20,17 @@ export default function Photos({ selectedPhotos, setSelectedPhotos }) {
     });
 
     if (!result.canceled) {
-      setSelectedPhotos([...selectedPhotos, ...result.assets.map(asset => asset.uri)]); // Ajouter les photos sélectionnées
+      const newPhotos = result.assets.map(asset => {
+        // Vérifier que l'URI est valide
+        if (!asset.uri) {
+          console.error('Invalid image URI');
+          return null;
+        }
+        return asset.uri;
+      }).filter(uri => uri !== null);
+
+      console.log('Selected photos:', newPhotos);
+      setSelectedPhotos([...selectedPhotos, ...newPhotos]);
     }
   };
 
@@ -42,21 +52,13 @@ export default function Photos({ selectedPhotos, setSelectedPhotos }) {
           ))}
         </View>
       </View>
-
-      <View style={styles.tipContainer}>
-        <View style={styles.tipLabelContainer}>
-          <Text style={styles.tipLabel}>TIP</Text>
-        </View>
-        <View style={styles.tipContent}>
-          <Text style={styles.tipTitle}>More photos get more replies</Text>
-          <Text style={styles.tipText}>
-            Include photos of the workplace, typical work, and team to showcase your business to potential candidates.
-          </Text>
-        </View>
-      </View>
+      {errors.selectedPhotos && touched.selectedPhotos && (
+        <Text style={styles.errorText}>{errors.selectedPhotos}</Text>
+      )}
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   label: {
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
   photoSection: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 6,
   },
   addPhotoButton: {
     backgroundColor: '#2C2C2E',
@@ -135,5 +137,10 @@ const styles = StyleSheet.create({
     color: '#888',
     fontSize: 14,
     right: 43,
+  },
+  errorText: {
+    color: 'red',
+    fontSize: 15,
+    marginBottom: 10,
   },
 });

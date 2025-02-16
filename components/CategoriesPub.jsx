@@ -2,9 +2,8 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Modal, FlatList } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-export default function Categories({ selectedCategory, setSelectedCategory }) {
+export default function Categories({ selectedCategory, setSelectedCategory, errors, touched }) {
   const [isModalVisible, setIsModalVisible] = React.useState(false);
-
   const categories = ['Commercial', 'Développeur', 'Designer', 'Marketing', 'RH', 'Finance'];
 
   const selectCategory = (category) => {
@@ -23,9 +22,13 @@ export default function Categories({ selectedCategory, setSelectedCategory }) {
           <Ionicons name="chevron-down-outline" size={20} color="#666" />
         </TouchableOpacity>
       </View>
+      {errors.selectedCategory && touched.selectedCategory && (
+        <Text style={styles.errorText}>{errors.selectedCategory}</Text>
+      )}
 
       {/* Modal pour afficher la liste des catégories */}
       <Modal visible={isModalVisible} transparent={true} animationType="slide">
+
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <FlatList
@@ -57,7 +60,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#2C2C2E',
     borderRadius: 12,
     padding: 10,
-    marginBottom: 16,
+    marginBottom: 6,
   },
   dropdown: {
     flexDirection: 'row',
@@ -100,4 +103,9 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 16,
   },
+  errorText:{
+    color: 'red',
+    fontSize: 15,
+    marginBottom: 10,
+  }
 });

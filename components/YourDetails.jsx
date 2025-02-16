@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
 
-export default function YourDetails({ contactName, setContactName, location, setLocation, phoneNumber, setPhoneNumber }) {
+export default function YourDetails({ contactName, setContactName, location, setLocation, phoneNumber, setPhoneNumber, errors, touched }) {
   return (
     <View>
       <Text style={styles.sectionTitle}>Your details</Text>
@@ -14,23 +14,35 @@ export default function YourDetails({ contactName, setContactName, location, set
           value={contactName} // Affiche la valeur actuelle du nom du contact
           onChangeText={setContactName} // Met à jour la valeur du nom du contact
         />
+        {errors.contactName && touched.contactName && (
+          <Text style={styles.errorText}>{errors.contactName}</Text>
+        )}
         <TextInput
           style={styles.input}
           placeholder="Location"
           placeholderTextColor="#666"
           value={location} // Affiche la valeur actuelle de la localisation
           onChangeText={setLocation} // Met à jour la localisation
+
         />
+        {errors.location && touched.location && (
+          <Text style={styles.errorText}>{errors.location}</Text>
+        )}
         <TextInput
           style={styles.input}
           placeholder="Phone number"
           placeholderTextColor="#666"
           keyboardType="phone-pad"
+
           value={phoneNumber} // Affiche la valeur actuelle du numéro de téléphone
           onChangeText={setPhoneNumber} // Met à jour le numéro de téléphone
         />
+        {errors.phoneNumber && touched.phoneNumber && (
+          <Text style={styles.errorText}>{errors.phoneNumber}</Text>
+        )}
       </View>
     </View>
+
   );
 }
 
@@ -51,5 +63,10 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 16,
     marginBottom: 16,
+  },
+  errorText: {
+    color: "red",
+    fontSize: 15,
+    marginBottom: 10,
   },
 });
